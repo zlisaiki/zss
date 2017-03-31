@@ -66,7 +66,7 @@ class all_goodsViews(LoginRequiredMixin,View):
     def get(self,request,*args,**kwargs):
         user=request.user
         user_goods = Good.objects.filter(user=user)
-       
+        
         return render(request, 'goods/table_foo_table.html', {"user_goods":user_goods})   
         
 

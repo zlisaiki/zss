@@ -24,9 +24,14 @@
     <div class="wrapper wrapper-content animated fadeInRight">
                            
  <div class="btn-group hidden-xs"  role="group">
-                                   <a href="{% url 'good:add_good' shop_id=shop_id %}"> <button type="button" class="btn btn-outline btn-default">
+                                    {% if shop_id %}
+                                         <a href="{% url 'good:add_good' shop_id=shop_id %}"> <button type="button" class="btn btn-outline btn-default">
                                          <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
                                     </button></a>
+
+                                    {% else %}
+                                  
+                                    {% endif %}
                                     <button type="button" class="btn btn-outline btn-default">
                                         <i class="glyphicon glyphicon-trash" aria-hidden="true"></i>
                                     </button>
@@ -92,7 +97,7 @@
                                     <td><span class="pie">{{ x.price1 }}</span></td>
                                     <td>{{ x.remark5  }}</td>
                                     <td>2{{ x.add_time }}</td>
-                                    <td><a href="{% url 'good:good_id' shop_id=shop_id good_id=x.id %}"> <i class="fa fa-check text-navy"></i> 修改</a></td>
+                                    <td><a href="{% url 'good:good_id' shop_id=x.shop.id good_id=x.id %}"> <i class="fa fa-check text-navy"></i> 修改</a></td>
                                 </tr>
                                 {% endfor %}
                               
